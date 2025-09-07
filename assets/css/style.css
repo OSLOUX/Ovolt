@@ -100,7 +100,8 @@ input, textarea {
 .container {
     max-width: 1680px;
     margin: 0 auto;
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--spacing-lg);
+    width: 100%;
 }
 
 .section__title {
@@ -393,7 +394,8 @@ input, textarea {
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-3xl);
     align-items: center;
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-2xl) 0;
+    width: 100%;
 }
 
 .hero__left {
