@@ -243,6 +243,10 @@ input, textarea {
     gap: var(--spacing-sm);
 }
 
+.nav__actions-mobile {
+    display: none;
+}
+
 .app-download-btn {
     display: flex;
     align-items: center;
@@ -1124,9 +1128,15 @@ input, textarea {
     }
     
     .nav__actions {
+        display: none;
+    }
+    
+    .nav__actions-mobile {
+        display: flex;
         flex-direction: column;
         gap: var(--spacing-md);
         align-items: center;
+        width: 100%;
     }
     
     .app-download-btn {
