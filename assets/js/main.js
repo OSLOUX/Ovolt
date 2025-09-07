@@ -81,6 +81,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // ===== HERO CAROUSEL FUNCTIONALITY =====
+    const carouselDots = document.querySelectorAll('.carousel__dot');
+    const carouselCards = document.querySelectorAll('.hero__card');
+    let currentSlide = 0;
+    
+    function showSlide(slideIndex) {
+        // Remove active classes
+        carouselDots.forEach(dot => dot.classList.remove('carousel__dot--active'));
+        carouselCards.forEach(card => card.classList.remove('hero__card--active'));
+        
+        // Add active classes to current slide
+        carouselDots[slideIndex].classList.add('carousel__dot--active');
+        carouselCards[slideIndex].classList.add('hero__card--active');
+        
+        currentSlide = slideIndex;
+    }
+    
+    // Dot click handlers
+    carouselDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+    
+    // Auto-play carousel
+    function autoPlayCarousel() {
+        const nextSlide = (currentSlide + 1) % carouselCards.length;
+        showSlide(nextSlide);
+    }
+    
+    // Start auto-play
+    let carouselInterval = setInterval(autoPlayCarousel, 4000);
+    
+    // Pause on hover
+    const carouselContainer = document.querySelector('.hero__carousel-container');
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
+        });
+        
+        carouselContainer.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(autoPlayCarousel, 4000);
+        });
+    }
+    
     // ===== HEADER SCROLL EFFECT =====
     const header = document.querySelector('.header');
     const logo = document.querySelector('.nav__logo .logo');
