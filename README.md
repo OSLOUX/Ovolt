@@ -37,6 +37,9 @@ Ovolt/
 │   │   └── style.css       # Ana CSS dosyası
 │   ├── js/
 │   │   └── main.js         # JavaScript dosyası
+│   ├── video/              # Video dosyalar
+│   │   ├── hero-video.mp4  # Hero arka plan videosu (MP4)
+│   │   └── hero-video.webm # Hero arka plan videosu (WebM)
 │   └── img/                # Görsel dosyalar
 │       ├── ovolt-logo.svg
 │       ├── hero-flash.svg
