@@ -285,7 +285,7 @@ input, textarea {
 
 .btn--station-map {
     background-color: var(--primary-yellow);
-    color: var(--primary-blue);
+    color: var(--primary-dark);
     padding: 20px 30px;
     border-radius: 50px;
     font-weight: 600;
@@ -321,7 +321,7 @@ input, textarea {
 .station-map-icon img {
     width: 20px;
     height: 20px;
-    filter: brightness(0) saturate(100%) invert(78%) sepia(86%) saturate(348%) hue-rotate(7deg) brightness(106%) contrast(106%);
+    filter: none;
 }
 
 .nav__toggle {
@@ -1170,7 +1170,7 @@ input, textarea {
         padding: 20px 30px;
         height: 60px;
         font-size: 16px;
-        color: var(--primary-blue);
+        color: var(--primary-dark);
         min-width: auto;
     }
     
@@ -1188,7 +1188,7 @@ input, textarea {
     .station-map-icon img {
         width: 20px;
         height: 20px;
-        filter: brightness(0) saturate(100%) invert(78%) sepia(86%) saturate(348%) hue-rotate(7deg) brightness(106%) contrast(106%);
+        filter: none;
     }
     
     .nav__toggle {
