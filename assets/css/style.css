@@ -285,7 +285,7 @@ input, textarea {
 
 .btn--station-map {
     background-color: var(--primary-yellow);
-    color: var(--primary-dark);
+    color: #00529B;
     padding: 20px 30px;
     border-radius: 50px;
     font-weight: 600;
@@ -308,19 +308,9 @@ input, textarea {
 }
 
 .station-map-icon {
-    width: 40px;
-    height: 40px;
-    background-color: var(--primary-blue);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 28px;
+    height: 33px;
     flex-shrink: 0;
-}
-
-.station-map-icon img {
-    width: 20px;
-    height: 20px;
     filter: none;
 }
 
@@ -1170,24 +1160,14 @@ input, textarea {
         padding: 20px 30px;
         height: 60px;
         font-size: 16px;
-        color: var(--primary-dark);
+        color: #00529B;
         min-width: auto;
     }
     
     .station-map-icon {
-        width: 40px;
-        height: 40px;
-        background-color: var(--primary-blue);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        width: 28px;
+        height: 33px;
         flex-shrink: 0;
-    }
-    
-    .station-map-icon img {
-        width: 20px;
-        height: 20px;
         filter: none;
     }
     
