@@ -260,9 +260,9 @@ input, textarea {
 
 .btn--station-map {
     background-color: var(--primary-yellow);
-    color: var(--primary-dark);
+    color: var(--primary-blue);
     padding: 1.5rem 2rem 1.5rem 4rem;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     font-weight: 600;
     font-size: 15px;
     display: flex;
@@ -272,6 +272,7 @@ input, textarea {
     box-shadow: var(--shadow-sm);
     height: 60px;
     position: relative;
+    border: none;
 }
 
 .btn--station-map:hover {
@@ -285,7 +286,7 @@ input, textarea {
     left: 1.5rem;
     width: 15px;
     height: 15px;
-    color: var(--primary-dark);
+    filter: none;
 }
 
 .nav__toggle {
@@ -1105,12 +1106,14 @@ input, textarea {
         padding: 1.5rem 2rem 1.5rem 4rem;
         height: 60px;
         font-size: 15px;
+        color: var(--primary-blue);
     }
     
     .station-map-icon {
         left: 1.5rem;
         width: 15px;
         height: 15px;
+        filter: none;
     }
     
     .nav__toggle {
