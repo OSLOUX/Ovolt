@@ -899,67 +899,156 @@ input, textarea {
 /* ===== INDIVIDUAL/FLEET SECTION ===== */
 .individual-fleet {
     padding: var(--spacing-3xl) 0;
-    background-color: var(--off-white);
+    background-color: var(--white);
 }
 
 .individual-fleet__content {
-    max-width: 1000px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-4xl);
+    align-items: start;
+}
+
+.individual-fleet__left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.individual-fleet__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.individual-fleet__top-text {
+    font-size: var(--font-size-base);
+    color: var(--black);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.individual-fleet__divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--light-gray);
+}
+
+.individual-fleet__bottom-text {
+    font-size: var(--font-size-sm);
+    color: var(--medium-gray);
+    margin: 0;
 }
 
 .individual-fleet__tabs {
     display: flex;
-    justify-content: center;
-    margin-bottom: var(--spacing-xl);
-    background-color: var(--white);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-xs);
-    box-shadow: var(--shadow-md);
+    gap: var(--spacing-lg);
 }
 
 .tab__button {
-    flex: 1;
-    padding: var(--spacing-md) var(--spacing-lg);
-    font-weight: 600;
-    font-size: var(--font-size-lg);
-    color: var(--medium-gray);
+    padding: 0;
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--primary-dark);
     background-color: transparent;
-    border-radius: var(--radius-md);
-    transition: all var(--transition-normal);
+    border: none;
     cursor: pointer;
+    transition: all var(--transition-normal);
+    position: relative;
 }
 
 .tab__button--active {
-    background-color: var(--primary-yellow);
     color: var(--primary-dark);
-    box-shadow: var(--shadow-sm);
+}
+
+.tab__button:not(.tab__button--active) {
+    color: var(--medium-gray);
+    font-weight: 400;
+}
+
+.individual-fleet__panels {
+    position: relative;
 }
 
 .tab__panel {
     display: none;
-    background-color: var(--white);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-2xl);
-    box-shadow: var(--shadow-lg);
-    text-align: center;
 }
 
 .tab__panel--active {
     display: block;
 }
 
-.tab__title {
-    font-size: var(--font-size-3xl);
-    font-weight: 700;
-    color: var(--primary-dark);
-    margin-bottom: var(--spacing-lg);
-}
-
 .tab__description {
     font-size: var(--font-size-lg);
     color: var(--medium-gray);
-    margin-bottom: var(--spacing-xl);
     line-height: 1.6;
+    margin: 0 0 var(--spacing-lg) 0;
+}
+
+.tab__button-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.tab__info-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: var(--light-gray);
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--black);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.tab__info-btn:hover {
+    background-color: var(--medium-gray);
+}
+
+.tab__arrow-btn {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-yellow);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.tab__arrow-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.tab__arrow-btn:hover .tab__arrow {
+    filter: brightness(0) invert(1);
+}
+
+.tab__arrow {
+    width: 14px;
+    height: 11px;
+    transition: all var(--transition-normal);
+}
+
+.individual-fleet__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.individual-fleet__image {
+    width: 100%;
+    max-width: 500px;
+}
+
+.individual-fleet__img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 /* ===== CONTACT SECTION ===== */
@@ -1642,8 +1731,18 @@ input, textarea {
         font-size: var(--font-size-3xl);
     }
     
+    .individual-fleet__content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+    
     .individual-fleet__tabs {
         flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .tab__button {
+        font-size: var(--font-size-xl);
     }
     
     .features__grid {
