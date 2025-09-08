@@ -416,7 +416,7 @@ input, textarea {
     align-items: center;
     padding: var(--spacing-3xl) 0;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .hero__left {
@@ -711,6 +711,12 @@ input, textarea {
 .tariffs {
     padding: var(--spacing-3xl) 0;
     background-color: var(--white);
+    min-height: 700px;
+}
+
+.tariffs__divider {
+    border: 1px solid var(--light-gray);
+    margin: 0 0 var(--spacing-3xl) 0;
 }
 
 .tariffs__content {
