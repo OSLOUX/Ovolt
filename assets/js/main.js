@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > 100) {
-            header.style.backgroundColor = 'rgba(26, 44, 61, 0.95)';
+            header.style.backgroundColor = 'rgba(0, 82, 155, 0.9)';
             header.style.backdropFilter = 'blur(10px)';
             
             // Logo küçültme efekti - responsive boyutlar
