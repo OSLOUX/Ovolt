@@ -348,12 +348,20 @@ document.addEventListener('DOMContentLoaded', function() {
     images.forEach(img => imageObserver.observe(img));
     
     // ===== PARALLAX EFFECT FOR HERO SECTION =====
-    const heroSection = document.querySelector('.hero');
-    if (heroSection) {
+    const heroBackground = document.querySelector('.hero__background');
+    const heroFlash = document.querySelector('.hero__flash');
+    
+    if (heroBackground || heroFlash) {
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
-            const parallax = scrolled * 0.5;
-            heroSection.style.transform = `translateY(${parallax}px)`;
+            const parallax = scrolled * 0.3;
+            
+            if (heroBackground) {
+                heroBackground.style.transform = `translateY(${parallax}px)`;
+            }
+            if (heroFlash) {
+                heroFlash.style.transform = `translateY(${parallax * 0.5}px)`;
+            }
         });
     }
     
