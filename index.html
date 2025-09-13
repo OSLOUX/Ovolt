@@ -23,8 +23,21 @@
                         <li class="nav__item">
                             <a href="#partnerships" class="nav__link">Hakkımızda</a>
                         </li>
-                        <li class="nav__item">
-                            <a href="#network-operator" class="nav__link">Çözümler</a>
+                        <li class="nav__item nav__item--dropdown">
+                            <div class="nav__dropdown-header">
+                                <a href="javascript:void(0)" class="nav__link" aria-expanded="false">Çözümler</a>
+                                <button class="nav__dropdown-toggle" aria-expanded="false" aria-label="Çözümler menüsünü aç/kapat">
+                                    <span class="nav__dropdown-icon">+</span>
+                                </button>
+                            </div>
+                            <ul class="nav__dropdown">
+                                <li class="nav__dropdown-item">
+                                    <a href="#individual" class="nav__dropdown-link">Bireysel</a>
+                                </li>
+                                <li class="nav__dropdown-item">
+                                    <a href="#fleet" class="nav__dropdown-link">Kurumsal</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav__item">
                             <a href="#tariffs" class="nav__link">Tarifeler</a>
@@ -185,12 +198,46 @@
                         Türkiye'nin dört bir yanında bulunan şarj istasyonlarımızla 
                         elektrikli araç sürücülerine kesintisiz hizmet sunuyoruz.
                     </p>
-                    <button class="service-points__btn">
+                    <button class="btn-outline">
                         <span>Hizmet Noktalarını Göster</span>
-                        <div class="service-points__btn-icon">
-                            <img src="assets/img/arrow-line-right-black.svg" alt="Arrow" class="service-points__arrow">
+                        <div class="btn-outline__icon">
+                            <img src="assets/img/arrow-line-right-black.svg" alt="Arrow" class="btn-outline__arrow">
                         </div>
                     </button>
+                </div>
+            </div>
+            
+            <!-- Station Map Icons -->
+            <div class="service-points__map-icons">
+                <div class="station-icon station-icon--1">
+                    <img src="assets/img/station-map-icon.svg" alt="Station" class="station-icon__img">
+                </div>
+                <div class="station-icon station-icon--2">
+                    <img src="assets/img/station-map-icon.svg" alt="Station" class="station-icon__img">
+                </div>
+                <div class="station-icon station-icon--3">
+                    <img src="assets/img/station-map-icon.svg" alt="Station" class="station-icon__img">
+                </div>
+                <div class="station-icon station-icon--4">
+                    <img src="assets/img/station-map-icon.svg" alt="Station" class="station-icon__img">
+                </div>
+                <div class="station-icon station-icon--5">
+                    <img src="assets/img/station-map-icon.svg" alt="Station" class="station-icon__img">
+                </div>
+                <div class="station-icon station-icon--6">
+                    <img src="assets/img/station-map-icon.svg" alt="Station" class="station-icon__img">
+                </div>
+                <div class="station-icon station-icon--7">
+                    <img src="assets/img/station-map-icon.svg" alt="Station" class="station-icon__img">
+                </div>
+                <div class="station-icon station-icon--8">
+                    <img src="assets/img/station-map-icon.svg" alt="Station" class="station-icon__img">
+                </div>
+                <div class="station-icon station-icon--9">
+                    <img src="assets/img/station-map-icon.svg" alt="Station" class="station-icon__img">
+                </div>
+                <div class="station-icon station-icon--10">
+                    <img src="assets/img/station-map-icon.svg" alt="Station" class="station-icon__img">
                 </div>
             </div>
         </div>
@@ -208,18 +255,24 @@
                     </p>
                 </div>
                 <div class="tariffs__right">
-                    <h3 class="tariffs__subtitle">Tarife Seçenekleri</h3>
+                    <div class="tariffs__subtitle-container">
+                        <h3 class="tariffs__subtitle">Tarife Seçenekleri</h3>
+                        <div class="tariffs__info">
+                            <div class="tariffs__info-icon">
+                                <span class="info-icon">i</span>
+                            </div>
+                            <span class="tariffs__info-text">30-31 Ağustos tarihleri arasında geçerlidir</span>
+                        </div>
+                    </div>
                     <div class="tariffs__list">
                         <div class="tariff__item">
                             <div class="tariff__info">
                                 <h4 class="tariff__name">AC Soket Tarifesi</h4>
                             </div>
                             <div class="tariff__price">
+                                <span class="tariff__old-price">₺10.99</span>
                                 <span class="tariff__amount">₺8.99</span>
                                 <span class="tariff__unit">kwh</span>
-                                <div class="tariff__info-icon">
-                                    <span class="info-tooltip">1 Ocak - 31 Aralık 2024</span>
-                                </div>
                             </div>
                             <a href="#" class="tariff__link">
                                 <span>İstasyonları Keşfet</span>
@@ -235,9 +288,21 @@
                                 <span class="tariff__old-price">₺11.99</span>
                                 <span class="tariff__amount">₺9.99</span>
                                 <span class="tariff__unit">kwh</span>
-                                <div class="tariff__info-icon">
-                                    <span class="info-tooltip">1 Ocak - 31 Aralık 2024</span>
-                                </div>
+                            </div>
+                            <a href="#" class="tariff__link">
+                                <span>İstasyonları Keşfet</span>
+                                <img src="assets/img/arrow-line-right-black.svg" alt="Arrow" class="tariff__arrow">
+                            </a>
+                        </div>
+                        
+                        <div class="tariff__item">
+                            <div class="tariff__info">
+                                <h4 class="tariff__name">Diğer Tüm DC Soketler</h4>
+                            </div>
+                            <div class="tariff__price">
+                                <span class="tariff__old-price">₺13.99</span>
+                                <span class="tariff__amount">₺11.99</span>
+                                <span class="tariff__unit">kwh</span>
                             </div>
                             <a href="#" class="tariff__link">
                                 <span>İstasyonları Keşfet</span>
@@ -269,15 +334,61 @@
         </div>
     </section>
 
+    <!-- Mobile App Section -->
+    <section class="mobile-app">
+        <div class="container">
+            <div class="mobile-app__content">
+                <!-- Üst Satır - Başlık ve Açıklama -->
+                <div class="mobile-app__title">
+                    <h2 class="mobile-app__heading">Her Yerde Şarj,<br>Kesintisiz<br> Sürüş!</h2>
+                    <div class="mobile-app__description">
+                        <p class="mobile-app__text">
+                            Elektrikli araç deneyiminizi daha kolay, daha hızlı ve daha keyifli hale getirin! 
+                            Ovolt mobil uygulaması ile şarj işlemlerinizi tek bir platform üzerinden kolayca yönetebilirsiniz.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Alt Satır - Butonlar ve Logo -->
+                <div class="mobile-app__bottom">
+                    <div class="mobile-app__download">
+                        <p class="mobile-app__download-text">App Store veya Google Play<br>üzerinden şimdi indirin</p>
+                        <div class="mobile-app__buttons">
+                            <a href="#" class="app-download-btn app-store">
+                                <img src="assets/img/app-store-icon.svg" alt="Apple Logo" class="app-icon">
+                                <div class="app-text">
+                                    <span class="app-download-text">Download on</span>
+                                    <span class="app-store-name">App Store</span>
+                                </div>
+                            </a>
+                            <a href="#" class="app-download-btn google-play">
+                                <img src="assets/img/google-play-icon.svg" alt="Google Play Logo" class="app-icon">
+                                <div class="app-text">
+                                    <span class="app-download-text">Download on</span>
+                                    <span class="app-store-name">Google Play</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-app__logo">
+                        <img src="assets/img/ovolt-blue-logo.svg" alt="Ovolt Logo" class="ovolt-logo">
+                    </div>
+                </div>
+                
+                <!-- Orta - Telefon Görüntüsü -->
+                <div class="mobile-app__phone">
+                    <img src="assets/img/ovolt-phone-app.png" alt="Ovolt Mobil Uygulama" class="phone-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Individual/Fleet Section -->
     <section class="individual-fleet" id="individual-fleet">
         <div class="container">
+            <hr class="tariffs__divider">
             <div class="individual-fleet__content">
-                <div class="individual-fleet__left">
-                    <p class="individual-fleet__top-text">Elektrikli araç şarj çözümlerinde öncü teknoloji ve güvenilir hizmet anlayışımızla, bireysel kullanıcılardan kurumsal filolara kadar her ihtiyaca uygun şarj altyapısı sunuyoruz.</p>
-                    <p class="individual-fleet__bottom-text">Türkiye'nin en yaygın şarj ağı ile kesintisiz yolculuk deneyimi</p>
-                </div>
-                
                 <div class="individual-fleet__center">
                     <div class="individual-fleet__tabs">
                         <button class="tab__button tab__button--active" data-tab="individual">Bireysel</button>
@@ -322,40 +433,27 @@
 
     <!-- Contact Us Section -->
     <section class="contact" id="contact">
-        <div class="contact__background">
-            <img src="assets/img/contact-us-bg.svg" alt="Contact Background" class="contact__bg">
-        </div>
         <div class="container">
             <div class="contact__content">
-                <div class="contact__form">
-                    <h2 class="section__title section__title--white">Bize Ulaşın</h2>
-                    <form class="form">
-                        <div class="form__group">
-                            <input type="text" class="form__input" placeholder="Adınız Soyadınız" required>
-                        </div>
-                        <div class="form__group">
-                            <input type="email" class="form__input" placeholder="E-posta Adresiniz" required>
-                        </div>
-                        <div class="form__group">
-                            <textarea class="form__textarea" placeholder="Mesajınız" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--primary btn--large">Gönder</button>
-                    </form>
+                <div class="contact__title">
+                    <h2 class="contact__heading">Bize Ulaşın</h2>
                 </div>
                 
-                <div class="contact__info">
-                    <div class="contact__item">
-                        <h4 class="contact__label">Telefon</h4>
-                        <p class="contact__value">+90 (212) 123 45 67</p>
-                    </div>
-                    <div class="contact__item">
-                        <h4 class="contact__label">E-posta</h4>
-                        <p class="contact__value">info@ovolt.com</p>
-                    </div>
-                    <div class="contact__item">
-                        <h4 class="contact__label">Adres</h4>
-                        <p class="contact__value">Maslak Mahallesi, Büyükdere Caddesi No:123<br>Şişli/İstanbul</p>
-                    </div>
+                <div class="contact__description">
+                    <p class="contact__text">
+                        Bireysel ve kurumsal<br>
+                        çözümlerimizle ilgili bilgi almak<br>
+                        için bizimle iletişime geçin
+                    </p>
+                </div>
+                
+                <div class="contact__form-btn">
+                    <button class="btn-outline">
+                        <span>İletişim Formu</span>
+                        <div class="btn-outline__icon">
+                            <img src="assets/img/arrow-line-right-black.svg" alt="Arrow" class="btn-outline__arrow">
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
@@ -417,31 +515,6 @@
         </div>
     </section>
 
-    <!-- Mobile App Section -->
-    <section class="mobile-app">
-        <div class="container">
-            <div class="mobile-app__content">
-                <div class="mobile-app__text">
-                    <h2 class="section__title">Her Yerde Şarj, Kesintisiz Sürüş!</h2>
-                    <p class="mobile-app__description">
-                        Mobil uygulamamız ile en yakın şarj noktalarını bulun, 
-                        rezervasyon yapın ve ödeme işlemlerinizi kolayca gerçekleştirin.
-                    </p>
-                    <div class="mobile-app__download">
-                        <a href="#" class="download-link">
-                            <img src="assets/img/app-store-icon.svg" alt="App Store'dan İndir">
-                        </a>
-                        <a href="#" class="download-link">
-                            <img src="assets/img/google-play-icon.svg" alt="Google Play'den İndir">
-                        </a>
-                    </div>
-                </div>
-                <div class="mobile-app__image">
-                    <img src="assets/img/ovolt-phone-app.png" alt="Ovolt Mobil Uygulama" class="phone-img">
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Sustainability Section -->
     <section class="sustainability">
