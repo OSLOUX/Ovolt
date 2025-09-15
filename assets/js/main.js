@@ -306,6 +306,506 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScrollTop = scrollTop;
     });
     
+    // ===== HERO SECTION ANIMATIONS =====
+    function initHeroAnimations() {
+        const heroTitle = document.querySelector('.hero__title');
+        const heroSubtitle = document.querySelector('.hero__subtitle');
+        const heroCarousel = document.querySelector('.hero__carousel-container');
+        const heroFlash = document.querySelector('.hero__flash');
+        
+        // Hero animasyonlarını sayfa yüklendiğinde başlat
+        setTimeout(() => {
+            if (heroTitle) {
+                heroTitle.classList.add('animate-hero-title');
+            }
+        }, 100);
+        
+        setTimeout(() => {
+            if (heroSubtitle) {
+                heroSubtitle.classList.add('animate-hero-subtitle');
+            }
+        }, 400);
+        
+        setTimeout(() => {
+            if (heroCarousel) {
+                heroCarousel.classList.add('animate-hero-carousel');
+            }
+        }, 700);
+        
+        setTimeout(() => {
+            if (heroFlash) {
+                heroFlash.classList.add('animate-hero-flash');
+            }
+        }, 200);
+    }
+    
+    // Hero animasyonlarını başlat
+    initHeroAnimations();
+    
+    // ===== SERVICE POINTS SECTION ANIMATIONS =====
+    function initServicePointsAnimations() {
+        const servicePointsSection = document.querySelector('.service-points');
+        const servicePointsTitle = document.querySelector('.service-points__title');
+        const servicePointsCounter = document.querySelector('.service-points__counter');
+        const servicePointsDescription = document.querySelector('.service-points__description');
+        const servicePointsButton = document.querySelector('.service-points .btn-outline');
+        
+        if (!servicePointsSection) return;
+        
+        const servicePointsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Başlık animasyonu
+                    setTimeout(() => {
+                        if (servicePointsTitle) {
+                            servicePointsTitle.classList.add('animate-service-points-title');
+                        }
+                    }, 100);
+                    
+                    // Sayaç animasyonu
+                    setTimeout(() => {
+                        if (servicePointsCounter) {
+                            servicePointsCounter.classList.add('animate-service-points-counter');
+                        }
+                    }, 300);
+                    
+                    // Açıklama animasyonu
+                    setTimeout(() => {
+                        if (servicePointsDescription) {
+                            servicePointsDescription.classList.add('animate-service-points-description');
+                        }
+                    }, 500);
+                    
+                    // Buton animasyonu
+                    setTimeout(() => {
+                        if (servicePointsButton) {
+                            servicePointsButton.classList.add('animate-service-points-button');
+                        }
+                    }, 700);
+                    
+                    // Observer'ı kapat (sadece bir kez çalışsın)
+                    servicePointsObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        servicePointsObserver.observe(servicePointsSection);
+    }
+    
+    // Service Points animasyonlarını başlat
+    initServicePointsAnimations();
+    
+    // ===== TARIFFS SECTION ANIMATIONS =====
+    function initTariffsAnimations() {
+        const tariffsSection = document.querySelector('.tariffs');
+        const tariffsTitle = document.querySelector('.tariffs__title');
+        const tariffsDescription = document.querySelector('.tariffs__description');
+        const tariffsSubtitle = document.querySelector('.tariffs__subtitle');
+        const tariffItems = document.querySelectorAll('.tariff__item');
+        const tariffPrices = document.querySelectorAll('.tariff__price');
+        
+        if (!tariffsSection) return;
+        
+        const tariffsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Başlık animasyonu
+                    setTimeout(() => {
+                        if (tariffsTitle) {
+                            tariffsTitle.classList.add('animate-tariffs-title');
+                        }
+                    }, 100);
+                    
+                    // Açıklama animasyonu
+                    setTimeout(() => {
+                        if (tariffsDescription) {
+                            tariffsDescription.classList.add('animate-tariffs-description');
+                        }
+                    }, 200);
+                    
+                    // Alt başlık animasyonu
+                    setTimeout(() => {
+                        if (tariffsSubtitle) {
+                            tariffsSubtitle.classList.add('animate-tariffs-subtitle');
+                        }
+                    }, 300);
+                    
+                    // Tarife kartları animasyonu (sırayla)
+                    tariffItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('animate-tariff-item');
+                        }, 400 + (index * 150));
+                    });
+                    
+                    // Fiyatlar animasyonu (sırayla)
+                    tariffPrices.forEach((price, index) => {
+                        setTimeout(() => {
+                            price.classList.add('animate-tariff-price');
+                        }, 600 + (index * 150));
+                    });
+                    
+                    // Observer'ı kapat (sadece bir kez çalışsın)
+                    tariffsObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        tariffsObserver.observe(tariffsSection);
+    }
+    
+    // Tariffs animasyonlarını başlat
+    initTariffsAnimations();
+    
+    // ===== OPET PARTNERSHIP SECTION ANIMATIONS =====
+    function initOpetPartnershipAnimations() {
+        const opetPartnershipSection = document.querySelector('.opet-partnership');
+        const opetPartnershipTitle = document.querySelector('.opet-partnership__title');
+        const opetPartnershipDescription = document.querySelector('.opet-partnership__description');
+        
+        if (!opetPartnershipSection) return;
+        
+        const opetPartnershipObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Başlık animasyonu
+                    setTimeout(() => {
+                        if (opetPartnershipTitle) {
+                            opetPartnershipTitle.classList.add('animate-opet-partnership-title');
+                        }
+                    }, 100);
+                    
+                    // Açıklama animasyonu
+                    setTimeout(() => {
+                        if (opetPartnershipDescription) {
+                            opetPartnershipDescription.classList.add('animate-opet-partnership-description');
+                        }
+                    }, 400);
+                    
+                    // Observer'ı kapat (sadece bir kez çalışsın)
+                    opetPartnershipObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        opetPartnershipObserver.observe(opetPartnershipSection);
+    }
+    
+    // Opet Partnership animasyonlarını başlat
+    initOpetPartnershipAnimations();
+    
+    // ===== MOBILE APP SECTION ANIMATIONS =====
+    function initMobileAppAnimations() {
+        const mobileAppSection = document.querySelector('.mobile-app');
+        const mobileAppHeading = document.querySelector('.mobile-app__heading');
+        const mobileAppText = document.querySelector('.mobile-app__text');
+        const mobileAppButtons = document.querySelector('.mobile-app__buttons');
+        const mobileAppLogo = document.querySelector('.ovolt-logo');
+        const mobileAppPhone = document.querySelector('.phone-img');
+        
+        if (!mobileAppSection) return;
+        
+        const mobileAppObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Başlık animasyonu
+                    setTimeout(() => {
+                        if (mobileAppHeading) {
+                            mobileAppHeading.classList.add('animate-mobile-app-heading');
+                        }
+                    }, 100);
+                    
+                    // Açıklama animasyonu
+                    setTimeout(() => {
+                        if (mobileAppText) {
+                            mobileAppText.classList.add('animate-mobile-app-text');
+                        }
+                    }, 200);
+                    
+                    // Butonlar animasyonu
+                    setTimeout(() => {
+                        if (mobileAppButtons) {
+                            mobileAppButtons.classList.add('animate-mobile-app-buttons');
+                        }
+                    }, 300);
+                    
+                    // Logo animasyonu
+                    setTimeout(() => {
+                        if (mobileAppLogo) {
+                            mobileAppLogo.classList.add('animate-mobile-app-logo');
+                        }
+                    }, 400);
+                    
+                    // Telefon animasyonu
+                    setTimeout(() => {
+                        if (mobileAppPhone) {
+                            mobileAppPhone.classList.add('animate-mobile-app-phone');
+                        }
+                    }, 500);
+                    
+                    // Observer'ı kapat (sadece bir kez çalışsın)
+                    mobileAppObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        mobileAppObserver.observe(mobileAppSection);
+    }
+    
+    // Mobile App animasyonlarını başlat
+    initMobileAppAnimations();
+    
+    // ===== INDIVIDUAL/FLEET SECTION ANIMATIONS =====
+    function initIndividualFleetAnimations() {
+        const individualFleetSection = document.querySelector('.individual-fleet');
+        const tabButtons = document.querySelectorAll('.individual-fleet .tab__button');
+        const tabDescriptions = document.querySelectorAll('.individual-fleet .tab__description');
+        const individualFleetButton = document.querySelector('.individual-fleet .btn-outline');
+        const individualFleetImage = document.querySelector('.individual-fleet__img');
+        
+        if (!individualFleetSection) return;
+        
+        const individualFleetObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Tab butonları animasyonu (sırayla)
+                    tabButtons.forEach((button, index) => {
+                        setTimeout(() => {
+                            button.classList.add('animate-individual-fleet-tab');
+                        }, 100 + (index * 200));
+                    });
+                    
+                    // Tab açıklamaları animasyonu (sırayla)
+                    tabDescriptions.forEach((description, index) => {
+                        setTimeout(() => {
+                            description.classList.add('animate-individual-fleet-description');
+                        }, 300 + (index * 200));
+                    });
+                    
+                    // Buton animasyonu
+                    setTimeout(() => {
+                        if (individualFleetButton) {
+                            individualFleetButton.classList.add('animate-individual-fleet-button');
+                        }
+                    }, 500);
+                    
+                    // Görsel animasyonu
+                    setTimeout(() => {
+                        if (individualFleetImage) {
+                            individualFleetImage.classList.add('animate-individual-fleet-image');
+                        }
+                    }, 700);
+                    
+                    // Observer'ı kapat (sadece bir kez çalışsın)
+                    individualFleetObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        individualFleetObserver.observe(individualFleetSection);
+    }
+    
+    // Individual/Fleet animasyonlarını başlat
+    initIndividualFleetAnimations();
+    
+    // ===== CONTACT SECTION ANIMATIONS =====
+    function initContactAnimations() {
+        const contactSection = document.querySelector('.contact');
+        const contactHeading = document.querySelector('.contact__heading');
+        const contactText = document.querySelector('.contact__text');
+        const contactButton = document.querySelector('.contact .btn-outline');
+        
+        if (!contactSection) return;
+        
+        const contactObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Başlık animasyonu
+                    setTimeout(() => {
+                        if (contactHeading) {
+                            contactHeading.classList.add('animate-contact-heading');
+                        }
+                    }, 100);
+                    
+                    // Açıklama animasyonu
+                    setTimeout(() => {
+                        if (contactText) {
+                            contactText.classList.add('animate-contact-text');
+                        }
+                    }, 200);
+                    
+                    // Buton animasyonu
+                    setTimeout(() => {
+                        if (contactButton) {
+                            contactButton.classList.add('animate-contact-button');
+                        }
+                    }, 300);
+                    
+                    // Observer'ı kapat (sadece bir kez çalışsın)
+                    contactObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        contactObserver.observe(contactSection);
+    }
+    
+    // Contact animasyonlarını başlat
+    initContactAnimations();
+    
+    // ===== FEATURES SECTION ANIMATIONS =====
+    function initFeaturesAnimations() {
+        const featuresSection = document.querySelector('.features');
+        const featureCards = document.querySelectorAll('.feature__card');
+        const featureContents = document.querySelectorAll('.feature__content');
+        const featureStats = document.querySelectorAll('.feature__stats');
+        
+        if (!featuresSection) return;
+        
+        const featuresObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Feature kartları animasyonu (sırayla)
+                    featureCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate-feature-card');
+                        }, 100 + (index * 200));
+                    });
+                    
+                    // Feature içerikleri animasyonu (sırayla)
+                    featureContents.forEach((content, index) => {
+                        setTimeout(() => {
+                            content.classList.add('animate-feature-content');
+                        }, 300 + (index * 200));
+                    });
+                    
+                    // Feature istatistikleri animasyonu (sırayla)
+                    featureStats.forEach((stats, index) => {
+                        setTimeout(() => {
+                            stats.classList.add('animate-feature-stats');
+                        }, 500 + (index * 200));
+                    });
+                    
+                    // Observer'ı kapat (sadece bir kez çalışsın)
+                    featuresObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        featuresObserver.observe(featuresSection);
+    }
+    
+    // Features animasyonlarını başlat
+    initFeaturesAnimations();
+    
+    // ===== SUSTAINABILITY SECTION ANIMATIONS =====
+    function initSustainabilityAnimations() {
+        const sustainabilitySection = document.querySelector('.sustainability');
+        const sustainabilityTitle = document.querySelector('.sustainability__title');
+        const sustainabilityDescriptions = document.querySelectorAll('.sustainability__description');
+        
+        if (!sustainabilitySection) return;
+        
+        const sustainabilityObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Başlık animasyonu
+                    setTimeout(() => {
+                        if (sustainabilityTitle) {
+                            sustainabilityTitle.classList.add('animate-sustainability-title');
+                        }
+                    }, 100);
+                    
+                    // Açıklama paragrafları animasyonu (sırayla)
+                    sustainabilityDescriptions.forEach((description, index) => {
+                        setTimeout(() => {
+                            description.classList.add('animate-sustainability-description');
+                        }, 300 + (index * 200));
+                    });
+                    
+                    // Observer'ı kapat (sadece bir kez çalışsın)
+                    sustainabilityObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        sustainabilityObserver.observe(sustainabilitySection);
+    }
+    
+    // Sustainability animasyonlarını başlat
+    initSustainabilityAnimations();
+    
+    // ===== PARTNERSHIPS SECTION ANIMATIONS =====
+    function initPartnershipsAnimations() {
+        const partnershipsSection = document.querySelector('.partnerships');
+        const partnershipsDescription = document.querySelector('.partnerships__description');
+        const partnershipsHeading = document.querySelector('.partnerships__heading');
+        const partnershipsLogos = document.querySelector('.partnerships__logos');
+        
+        if (!partnershipsSection) return;
+        
+        const partnershipsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Açıklama animasyonu
+                    setTimeout(() => {
+                        if (partnershipsDescription) {
+                            partnershipsDescription.classList.add('animate-partnerships-description');
+                        }
+                    }, 100);
+                    
+                    // Başlık animasyonu
+                    setTimeout(() => {
+                        if (partnershipsHeading) {
+                            partnershipsHeading.classList.add('animate-partnerships-heading');
+                        }
+                    }, 200);
+                    
+                    // Logo carousel animasyonu
+                    setTimeout(() => {
+                        if (partnershipsLogos) {
+                            partnershipsLogos.classList.add('animate-partnerships-logos');
+                        }
+                    }, 300);
+                    
+                    // Observer'ı kapat (sadece bir kez çalışsın)
+                    partnershipsObserver.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        });
+        
+        partnershipsObserver.observe(partnershipsSection);
+    }
+    
+    // Partnerships animasyonlarını başlat
+    initPartnershipsAnimations();
+    
     // ===== SCROLL REVEAL ANIMATION =====
     const observerOptions = {
         threshold: 0.1,
@@ -653,6 +1153,147 @@ const storage = {
     }
 };
 
+// ===== PARTNERSHIPS SLIDER =====
+class PartnershipsSlider {
+    constructor() {
+        this.slider = document.querySelector('.partnerships__logos');
+        this.logos = document.querySelectorAll('.partnership__logo');
+        this.currentIndex = 0;
+        this.isPaused = false;
+        this.autoSlideInterval = null;
+        this.slideDuration = 3000; // 3 saniye
+        this.totalSlides = 0;
+        
+        if (this.slider && this.logos.length > 0) {
+            this.init();
+        }
+    }
+    
+    init() {
+        this.createInfiniteLoop();
+        this.setupSlider();
+        this.startAutoSlide();
+        this.addEventListeners();
+    }
+    
+    createInfiniteLoop() {
+        // Orijinal logoları ve divider'ları klonla
+        const originalElements = Array.from(this.slider.children);
+        
+        // 30 logo olana kadar klonla (6 orijinal + 24 klon = 30) - daha fazla klon
+        for (let i = 0; i < 24; i++) {
+            const originalIndex = i % 6; // 6 orijinal logo var
+            const logoIndex = originalIndex * 2; // Her logo için 2 element (logo + divider)
+            const dividerIndex = originalIndex * 2 + 1;
+            
+            // Element'lerin var olduğunu kontrol et
+            if (originalElements[logoIndex] && originalElements[dividerIndex]) {
+                const clonedLogo = originalElements[logoIndex].cloneNode(true);
+                const clonedDivider = originalElements[dividerIndex].cloneNode(true);
+                
+                this.slider.appendChild(clonedLogo);
+                this.slider.appendChild(clonedDivider);
+            }
+        }
+        
+        // Tüm logoları yeniden seç (orijinal + klonlar)
+        this.logos = document.querySelectorAll('.partnership__logo');
+        this.totalSlides = 30; // Toplam 30 logo - daha fazla logo
+    }
+    
+    setupSlider() {
+        // Slider container'ı ayarla
+        this.slider.style.display = 'flex';
+        this.slider.style.transition = 'transform 0.5s ease-in-out';
+        this.slider.style.transform = 'translateX(0)';
+        
+        // Responsive logo genişliği hesapla (logo + divider + gap)
+        const isMobile = window.innerWidth <= 768;
+        const logoSize = isMobile ? 100 : 120;
+        const dividerWidth = 1;
+        const gap = isMobile ? 16 : 32;
+        this.logoWidth = logoSize + dividerWidth + gap; // logo + divider + gap
+        
+        // Slider'ı toplam logo sayısına göre ayarla
+        this.slider.style.width = `${this.logoWidth * this.totalSlides}px`;
+    }
+    
+    startAutoSlide() {
+        this.autoSlideInterval = setInterval(() => {
+            if (!this.isPaused) {
+                this.nextSlide();
+            }
+        }, this.slideDuration);
+    }
+    
+    nextSlide() {
+        this.currentIndex++;
+        
+        // 30 logoya geldiysek başa dön (sonsuz loop)
+        if (this.currentIndex >= this.totalSlides) {
+            this.currentIndex = 0;
+            // Smooth geçiş için transition'ı geçici olarak kapat
+            this.slider.style.transition = 'none';
+            this.updateSliderPosition();
+            // Bir sonraki frame'de transition'ı geri aç
+            requestAnimationFrame(() => {
+                this.slider.style.transition = 'transform 0.5s ease-in-out';
+            });
+        } else {
+            this.updateSliderPosition();
+        }
+    }
+    
+    updateSliderPosition() {
+        const translateX = -this.currentIndex * this.logoWidth;
+        this.slider.style.transform = `translateX(${translateX}px)`;
+    }
+    
+    pauseSlider() {
+        this.isPaused = true;
+        if (this.autoSlideInterval) {
+            clearInterval(this.autoSlideInterval);
+        }
+    }
+    
+    resumeSlider() {
+        this.isPaused = false;
+        this.startAutoSlide();
+    }
+    
+    addEventListeners() {
+        // Hover'da durdur
+        this.slider.addEventListener('mouseenter', () => {
+            this.pauseSlider();
+        });
+        
+        // Hover'dan çıkınca devam et
+        this.slider.addEventListener('mouseleave', () => {
+            this.resumeSlider();
+        });
+        
+        // Logo hover efektleri
+        this.logos.forEach(logo => {
+            logo.addEventListener('mouseenter', () => {
+                logo.style.transform = 'scale(1.1)';
+            });
+            
+            logo.addEventListener('mouseleave', () => {
+                logo.style.transform = 'scale(1)';
+            });
+        });
+    }
+    
+    destroy() {
+        if (this.autoSlideInterval) {
+            clearInterval(this.autoSlideInterval);
+        }
+    }
+}
+
+// Initialize Partnerships Slider
+let partnershipsSlider;
+
 // Export functions for potential use in other scripts
 window.OvoltUtils = {
     isInViewport,
@@ -660,3 +1301,20 @@ window.OvoltUtils = {
     formatPhoneNumber,
     storage
 };
+
+// Initialize slider when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    partnershipsSlider = new PartnershipsSlider();
+    
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
