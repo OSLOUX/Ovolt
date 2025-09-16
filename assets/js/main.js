@@ -212,13 +212,20 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSlide = 0;
     
     function showSlide(slideIndex) {
+        // Check if elements exist
+        if (carouselDots.length === 0 || carouselCards.length === 0) {
+            return;
+        }
+        
         // Remove active classes
         carouselDots.forEach(dot => dot.classList.remove('carousel__dot--active'));
         carouselCards.forEach(card => card.classList.remove('hero__card--active'));
         
         // Add active classes to current slide
-        carouselDots[slideIndex].classList.add('carousel__dot--active');
-        carouselCards[slideIndex].classList.add('hero__card--active');
+        if (carouselDots[slideIndex] && carouselCards[slideIndex]) {
+            carouselDots[slideIndex].classList.add('carousel__dot--active');
+            carouselCards[slideIndex].classList.add('hero__card--active');
+        }
         
         currentSlide = slideIndex;
     }
@@ -232,12 +239,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Auto-play carousel
     function autoPlayCarousel() {
-        const nextSlide = (currentSlide + 1) % carouselCards.length;
-        showSlide(nextSlide);
+        if (carouselCards.length > 0) {
+            const nextSlide = (currentSlide + 1) % carouselCards.length;
+            showSlide(nextSlide);
+        }
     }
     
-    // Start auto-play
-    let carouselInterval = setInterval(autoPlayCarousel, 4000);
+    // Start auto-play only if carousel exists
+    let carouselInterval;
+    if (carouselCards.length > 0) {
+        carouselInterval = setInterval(autoPlayCarousel, 4000);
+    }
     
     // Pause on hover
     const carouselContainer = document.querySelector('.hero__carousel-container');
@@ -823,8 +835,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add scroll reveal class to elements
     const revealElements = document.querySelectorAll('.service-points__content, .tariffs__grid, .individual-fleet__content, .contact__content, .features__grid, .partnerships__logos, .mobile-app__content, .sustainability__content');
     revealElements.forEach(element => {
-        element.classList.add('scroll-reveal');
-        observer.observe(element);
+        if (element) {
+            element.classList.add('scroll-reveal');
+            observer.observe(element);
+        }
     });
     
     // Station icons animation trigger
@@ -1034,10 +1048,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ===== PARTNERSHIP LOGOS ANIMATION =====
     const partnershipLogos = document.querySelectorAll('.partnership__logo');
-    partnershipLogos.forEach((logo, index) => {
-        logo.style.animationDelay = `${index * 0.1}s`;
-        logo.classList.add('animate-fade-in-up');
-    });
+    if (partnershipLogos.length > 0) {
+        partnershipLogos.forEach((logo, index) => {
+            logo.style.animationDelay = `${index * 0.1}s`;
+            logo.classList.add('animate-fade-in-up');
+        });
+    }
     
     // ===== ACCESSIBILITY IMPROVEMENTS =====
     
@@ -1078,23 +1094,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('JavaScript Error:', e.error);
         // You could send error reports to a logging service here
     });
-    
-    // ===== CONSOLE WELCOME MESSAGE =====
-    console.log(`
-    🚗⚡ Ovolt Elektrikli Araç Şarj İstasyonu
-    ======================================
-    
-    Web sitesi başarıyla yüklendi!
-    
-    Özellikler:
-    ✅ Responsive tasarım
-    ✅ Modern animasyonlar
-    ✅ Erişilebilirlik desteği
-    ✅ Performans optimizasyonu
-    
-    Geliştirici: AI Assistant
-    Versiyon: 1.0.0
-    `);
     
 });
 
@@ -1164,6 +1163,7 @@ class PartnershipsSlider {
         this.slideDuration = 3000; // 3 saniye
         this.totalSlides = 0;
         
+        // Only initialize if elements exist
         if (this.slider && this.logos.length > 0) {
             this.init();
         }
@@ -1304,7 +1304,11 @@ window.OvoltUtils = {
 
 // Initialize slider when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    partnershipsSlider = new PartnershipsSlider();
+    // Only initialize partnerships slider if the element exists
+    const partnershipsLogos = document.querySelector('.partnerships__logos');
+    if (partnershipsLogos) {
+        partnershipsSlider = new PartnershipsSlider();
+    }
     
     // Scroll to top functionality
     const scrollToTopBtn = document.getElementById('scrollToTop');

@@ -381,6 +381,10 @@ input, textarea {
 
 /* Mobile dropdown header styles */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
     .nav__dropdown-header {
         display: flex;
         align-items: center;
@@ -427,23 +431,6 @@ input, textarea {
 
 .nav__actions-mobile {
     display: none;
-}
-
-.app-btn {
-    display: block;
-    text-decoration: none;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.app-btn:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-}
-
-.app-btn-img {
-    max-width: 200px;
-    height: auto;
-    display: block;
 }
 
 .app-download-btn {
@@ -2611,6 +2598,255 @@ input, textarea {
     animation: partnershipsLogosAnimation 1s ease-out forwards;
 }
 
+/* ===== PAGE HERO SECTION ===== */
+.page-hero {
+    position: relative;
+    width: 100%;
+    height: 486px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 0;
+    overflow: hidden;
+}
+
+.page-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.page-hero__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -10px;
+}
+
+.page-hero__breadcrumb {
+    flex: 1;
+}
+
+/* Breadcrumb Styles */
+.breadcrumb__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+}
+
+.breadcrumb__item {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb__item:not(:last-child)::after {
+    content: "/";
+    color: rgba(255, 255, 255, 0.7);
+    margin-left: 8px;
+    font-size: var(--font-size-sm);
+}
+
+.breadcrumb__link {
+    color: white;
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb__link:hover {
+    color: var(--primary-dark);
+}
+
+.breadcrumb__current {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-sm);
+    font-weight: 400;
+}
+
+.page-hero__logo {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.page-hero__logo-img {
+    height: auto;
+    width: auto;
+}
+
+
+/* ===== ABOUT SECTION ===== */
+.about {
+    padding: var(--spacing-3xl) 0;
+    background-color: var(--white);
+}
+
+.about__content {
+    width: 100%;
+}
+
+.about__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-4xl);
+    align-items: flex-start;
+}
+
+.about__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-5xl);
+}
+
+.about__title {
+    font-size: var(--font-size-5xl);
+    font-weight: 600;
+    color: var(--primary-dark);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.about__description {
+    font-size: var(--font-size-4xl);
+    color: var(--dark-gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.about__image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.about__img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.about__placeholder {
+    width: 100%;
+    height: 645px;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #ccc;
+}
+
+.placeholder__text {
+    color: #666;
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+}
+
+.about__divider {
+    border: none;
+    height: 1px;
+    background-color: var(--light-gray);
+    margin: var(--spacing-4xl) 0 0 0;
+}
+
+.about__details {
+    margin-top: var(--spacing-4xl);
+}
+
+.about__details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-4xl);
+    align-items: center;
+}
+
+.about__details-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.about__details-placeholder {
+    width: 100%;
+    height: 415px;
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #ccc;
+}
+
+.about__details-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.about__details-paragraph {
+    font-size: 20px;
+    color: var(--dark-gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.about__mission-vision {
+    margin-top: var(--spacing-4xl);
+}
+
+.about__mission-vision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-4xl);
+    align-items: flex-start;
+}
+
+.about__mission-vision-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin: 0 0 var(--spacing-lg) 0;
+}
+
+.about__mission-vision-quote {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--dark-gray);
+    font-style: italic;
+    line-height: 1.6;
+    margin: 0 0 var(--spacing-lg) 0;
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+.about__mission-vision-description {
+    font-size: var(--font-size-base);
+    color: var(--dark-gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
+
 /* ===== SCROLL ANIMATIONS ===== */
 .scroll-reveal {
     opacity: 0;
@@ -2932,17 +3168,6 @@ input, textarea {
         gap: var(--spacing-md);
         align-items: center;
         width: 100%;
-    }
-    
-    .app-btn {
-        width: 100%;
-        max-width: 250px;
-    }
-    
-    .app-btn-img {
-        width: 100%;
-        max-width: 250px;
-        height: auto;
     }
     
     .app-download-btn {
@@ -3380,97 +3605,147 @@ input, textarea {
     
 }
 
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .page-hero {
+        height: 300px;
+    }
+    
+    .page-hero__content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .page-hero__breadcrumb {
+        flex: none;
+    }
+    
+    .page-hero__logo {
+        flex: none;
+        align-self: flex-end;
+    }
+    
+    .page-hero__logo-img {
+        height: 40px;
+    }
+    
+    .breadcrumb__link,
+    .breadcrumb__current {
+        font-size: var(--font-size-xs);
+    }
+    
+    /* About Section Mobile */
+    .about__grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+    
+    .about__title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .about__description {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .about__placeholder {
+        height: 300px;
+    }
+    
+    /* About Details Mobile */
+    .about__details-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+    
+    .about__details-placeholder {
+        height: 300px;
+    }
+    
+    .about__details-paragraph {
+        font-size: 18px;
+    }
+    
+    /* Mission Vision Mobile */
+    .about__mission-vision-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+    
+    .about__mission-vision-title {
+        font-size: var(--font-size-xl);
+    }
+    
+    .about__mission-vision-quote {
+        font-size: var(--font-size-base);
+    }
+    
+    .about__mission-vision-description {
+        font-size: var(--font-size-sm);
+    }
+}
+
 @media (max-width: 480px) {
     .container {
         padding: 0 var(--spacing-sm);
     }
     
-    .nav__logo .logo {
-        width: 104px;
-        height: 40px;
+    .page-hero {
+        height: 250px;
     }
     
-    .hero__title {
-        font-size: var(--font-size-3xl);
+    .page-hero__logo-img {
+        height: 35px;
     }
     
-    .hero__subtitle {
-        font-size: var(--font-size-base);
+    .breadcrumb__link,
+    .breadcrumb__current {
+        font-size: 12px;
     }
     
-    .section__title {
+    /* About Section Small Mobile */
+    .about__title {
         font-size: var(--font-size-2xl);
     }
     
-    .service-points__count {
-        font-size: var(--font-size-3xl);
-    }
-    
-    .service-points__icon {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .btn-outline {
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: var(--font-size-sm);
-    }
-    
-    .btn-outline__icon {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .btn {
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: var(--font-size-sm);
-    }
-    
-    .btn--large {
-        padding: var(--spacing-md) var(--spacing-lg);
-        font-size: var(--font-size-base);
-    }
-    
-    .partnerships__content {
-        padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
-    }
-    
-    .partnerships__heading {
+    .about__description {
         font-size: var(--font-size-xl);
     }
     
-    .partnerships__logos {
-        gap: var(--spacing-sm);
+    .about__placeholder {
+        height: 250px;
     }
     
-    .partnership__logo {
-        padding: var(--spacing-xs);
+    .placeholder__text {
+        font-size: var(--font-size-md);
     }
     
-    .logo-img {
-        max-height: 30px;
+    /* About Details Small Mobile */
+    .about__details-placeholder {
+        height: 250px;
     }
     
-    .mobile-app__download {
-        flex-direction: column;
-        align-items: center;
+    .about__details-paragraph {
+        font-size: 16px;
     }
     
-    .opet-partnership {
-        min-height: 350px;
-        padding: var(--spacing-xl) 0;
+    /* Mission Vision Small Mobile */
+    .about__mission-vision-title {
+        font-size: var(--font-size-lg);
     }
     
-    .opet-partnership__title {
-        font-size: var(--font-size-xl);
-        margin-bottom: var(--spacing-sm);
+    .about__mission-vision-quote {
+        font-size: var(--font-size-sm);
     }
     
-    .opet-partnership__description {
-        font-size: var(--font-size-xs);
-    }
-    
-    .opet-logo {
-        height: 40px;
+    .about__mission-vision-description {
+        font-size: 14px;
     }
 }
+
