@@ -60,109 +60,107 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ===== DROPDOWN MENU FUNCTIONALITY =====
-    const dropdownItems = document.querySelectorAll('.nav__item--dropdown');
-    dropdownItems.forEach(item => {
-        const dropdown = item.querySelector('.nav__dropdown');
-        const link = item.querySelector('.nav__link');
-        const toggle = item.querySelector('.nav__dropdown-toggle');
+    function initDropdowns() {
+        const dropdownItems = document.querySelectorAll('.nav__item--dropdown');
         
-        // Desktop hover functionality
-        if (window.innerWidth > 768) {
-            item.addEventListener('mouseenter', function() {
-                dropdown.style.opacity = '1';
-                dropdown.style.visibility = 'visible';
-                dropdown.style.transform = 'translateY(0)';
-            });
+        // Clear existing event listeners by cloning and replacing elements
+        dropdownItems.forEach(item => {
+            const newItem = item.cloneNode(true);
+            item.parentNode.replaceChild(newItem, item);
+        });
+        
+        // Re-query after cloning
+        const freshDropdownItems = document.querySelectorAll('.nav__item--dropdown');
+        
+        freshDropdownItems.forEach(item => {
+            const dropdown = item.querySelector('.nav__dropdown');
+            const link = item.querySelector('.nav__link');
+            const toggle = item.querySelector('.nav__dropdown-toggle');
             
-            item.addEventListener('mouseleave', function() {
-                dropdown.style.opacity = '0';
-                dropdown.style.visibility = 'hidden';
-                dropdown.style.transform = 'translateY(-10px)';
-            });
-        }
-        
-        // Mobile collapse functionality
-        if (window.innerWidth <= 768 && toggle) {
-            // Make the link clickable to toggle dropdown
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-                
-                // Close all other dropdowns
-                dropdownItems.forEach(otherItem => {
-                    const otherDropdown = otherItem.querySelector('.nav__dropdown');
-                    const otherToggle = otherItem.querySelector('.nav__dropdown-toggle');
-                    if (otherDropdown !== dropdown && otherToggle) {
-                        otherDropdown.classList.remove('active');
-                        otherToggle.setAttribute('aria-expanded', 'false');
-                    }
-                });
-                
-                // Toggle current dropdown
-                if (isExpanded) {
-                    dropdown.classList.remove('active');
-                    toggle.setAttribute('aria-expanded', 'false');
-                } else {
-                    dropdown.classList.add('active');
-                    toggle.setAttribute('aria-expanded', 'true');
-                }
-            });
-            
-            // Also make toggle button clickable
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                
-                // Close all other dropdowns
-                dropdownItems.forEach(otherItem => {
-                    const otherDropdown = otherItem.querySelector('.nav__dropdown');
-                    const otherToggle = otherItem.querySelector('.nav__dropdown-toggle');
-                    if (otherDropdown !== dropdown && otherToggle) {
-                        otherDropdown.classList.remove('active');
-                        otherToggle.setAttribute('aria-expanded', 'false');
-                    }
-                });
-                
-                // Toggle current dropdown
-                if (isExpanded) {
-                    dropdown.classList.remove('active');
-                    this.setAttribute('aria-expanded', 'false');
-                } else {
-                    dropdown.classList.add('active');
-                    this.setAttribute('aria-expanded', 'true');
-                }
-            });
-        }
-    });
-    
-    // Handle window resize for dropdown functionality
-    window.addEventListener('resize', function() {
-        const dropdowns = document.querySelectorAll('.nav__dropdown');
-        const toggles = document.querySelectorAll('.nav__dropdown-toggle');
-        
-        dropdowns.forEach(dropdown => {
+            // Desktop hover functionality
             if (window.innerWidth > 768) {
-                // Desktop mode - reset all styles
-                dropdown.style.display = '';
-                dropdown.style.opacity = '';
-                dropdown.style.visibility = '';
-                dropdown.style.transform = '';
-                dropdown.classList.remove('active');
-            } else {
-                // Mobile mode - ensure dropdowns are collapsed by default
-                dropdown.classList.remove('active');
+                item.addEventListener('mouseenter', function() {
+                    dropdown.style.opacity = '1';
+                    dropdown.style.visibility = 'visible';
+                    dropdown.style.transform = 'translateY(0)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    dropdown.style.opacity = '0';
+                    dropdown.style.visibility = 'hidden';
+                    dropdown.style.transform = 'translateY(-10px)';
+                });
+            }
+            
+            // Mobile collapse functionality
+            if (window.innerWidth <= 768 && toggle) {
+                // Make the link clickable to toggle dropdown
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all other dropdowns
+                    freshDropdownItems.forEach(otherItem => {
+                        const otherDropdown = otherItem.querySelector('.nav__dropdown');
+                        const otherToggle = otherItem.querySelector('.nav__dropdown-toggle');
+                        if (otherDropdown !== dropdown && otherToggle) {
+                            otherDropdown.classList.remove('active');
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    if (isExpanded) {
+                        dropdown.classList.remove('active');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    } else {
+                        dropdown.classList.add('active');
+                        toggle.setAttribute('aria-expanded', 'true');
+                    }
+                });
+                
+                // Also make toggle button clickable
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all other dropdowns
+                    freshDropdownItems.forEach(otherItem => {
+                        const otherDropdown = otherItem.querySelector('.nav__dropdown');
+                        const otherToggle = otherItem.querySelector('.nav__dropdown-toggle');
+                        if (otherDropdown !== dropdown && otherToggle) {
+                            otherDropdown.classList.remove('active');
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    if (isExpanded) {
+                        dropdown.classList.remove('active');
+                        this.setAttribute('aria-expanded', 'false');
+                    } else {
+                        dropdown.classList.add('active');
+                        this.setAttribute('aria-expanded', 'true');
+                    }
+                });
             }
         });
-        
-        // Reset toggle states
-        toggles.forEach(toggle => {
-            toggle.setAttribute('aria-expanded', 'false');
-        });
+    }
+    
+    // Initialize dropdowns on page load
+    initDropdowns();
+    
+    // Re-initialize dropdowns on window resize
+    window.addEventListener('resize', function() {
+        // Debounce resize events
+        clearTimeout(window.resizeTimeout);
+        window.resizeTimeout = setTimeout(initDropdowns, 100);
     });
+    
     
     // ===== SMOOTH SCROLLING FOR ANCHOR LINKS =====
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
@@ -202,6 +200,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetPanel = document.getElementById(targetTab);
             if (targetPanel) {
                 targetPanel.classList.add('tab__panel--active');
+                
+                // Animate the button in the active panel
+                const activeButton = targetPanel.querySelector('.btn-outline');
+                if (activeButton) {
+                    activeButton.classList.add('animate-individual-fleet-button');
+                }
             }
         });
     });
@@ -353,6 +357,310 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Hero animasyonlarını başlat
     initHeroAnimations();
+    
+    // ===== PAGE HERO SECTION ANIMATIONS =====
+    function initPageHeroAnimations() {
+        const pageHeroSection = document.querySelector('.page-hero');
+        const pageHeroBreadcrumb = document.querySelector('.page-hero__breadcrumb');
+        const pageHeroLogo = document.querySelector('.page-hero__logo');
+        
+        if (!pageHeroSection) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Breadcrumb animasyonu
+                    if (pageHeroBreadcrumb) {
+                        pageHeroBreadcrumb.classList.add('animate');
+                    }
+                    
+                    // Logo animasyonu (delay ile)
+                    if (pageHeroLogo) {
+                        pageHeroLogo.classList.add('animate');
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(pageHeroSection);
+    }
+    
+    // Page Hero animasyonlarını başlat
+    initPageHeroAnimations();
+    
+    // ===== ABOUT SECTION ANIMATIONS =====
+    function initAboutAnimations() {
+        const aboutSection = document.querySelector('.about');
+        const aboutText = document.querySelector('.about__text');
+        const aboutImage = document.querySelector('.about__image');
+        const aboutDetailsImage = document.querySelector('.about__details-image');
+        const aboutDetailsText = document.querySelector('.about__details-text');
+        const aboutVision = document.querySelector('.about__vision');
+        const aboutMission = document.querySelector('.about__mission');
+        
+        if (!aboutSection) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Ana grid animasyonları
+                    if (aboutText) {
+                        aboutText.classList.add('animate');
+                    }
+                    if (aboutImage) {
+                        aboutImage.classList.add('animate');
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        // Details section için ayrı observer
+        const detailsObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (aboutDetailsImage) {
+                        aboutDetailsImage.classList.add('animate');
+                    }
+                    if (aboutDetailsText) {
+                        aboutDetailsText.classList.add('animate');
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        // Mission/Vision section için ayrı observer
+        const missionVisionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (aboutVision) {
+                        aboutVision.classList.add('animate');
+                    }
+                    if (aboutMission) {
+                        aboutMission.classList.add('animate');
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(aboutSection);
+        
+        const aboutDetails = document.querySelector('.about__details');
+        if (aboutDetails) {
+            detailsObserver.observe(aboutDetails);
+        }
+        
+        const aboutMissionVision = document.querySelector('.about__mission-vision');
+        if (aboutMissionVision) {
+            missionVisionObserver.observe(aboutMissionVision);
+        }
+    }
+    
+    // About animasyonlarını başlat
+    initAboutAnimations();
+    
+    // ===== SOLUTION SECTION ANIMATIONS =====
+    function initSolutionAnimations() {
+        const solutionSection = document.querySelector('.solution');
+        const solutionText = document.querySelector('.solution__text');
+        const solutionImage = document.querySelector('.solution__image');
+        const solutionBottomItems = document.querySelectorAll('.solution__bottom-item');
+        const solutionFooter = document.querySelector('.solution__footer');
+        
+        if (!solutionSection) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Ana grid animasyonları
+                    if (solutionText) {
+                        solutionText.classList.add('animate');
+                    }
+                    if (solutionImage) {
+                        solutionImage.classList.add('animate');
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        // Bottom section için ayrı observer
+        const bottomObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    solutionBottomItems.forEach((item) => {
+                        item.classList.add('animate');
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        // Footer için ayrı observer
+        const footerObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (solutionFooter) {
+                        solutionFooter.classList.add('animate');
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(solutionSection);
+        
+        const solutionBottomSection = document.querySelector('.solution__bottom-section');
+        if (solutionBottomSection) {
+            bottomObserver.observe(solutionBottomSection);
+        }
+        
+        if (solutionFooter) {
+            footerObserver.observe(solutionFooter);
+        }
+    }
+    
+    // Solution animasyonlarını başlat
+    initSolutionAnimations();
+    
+    // ===== CORPORATE SOLUTIONS CARDS SECTION ANIMATIONS =====
+    function initCorporateSolutionsCardsAnimations() {
+        const corporateSection = document.querySelector('.corporate-solutions-cards');
+        const corporateTitle = document.querySelector('.corporate-solutions-cards__main-title');
+        const corporateItems = document.querySelectorAll('.corporate-solutions-cards__item');
+        
+        if (!corporateSection) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Başlık animasyonu
+                    if (corporateTitle) {
+                        corporateTitle.classList.add('animate');
+                    }
+                    
+                    // Kartlar animasyonu
+                    corporateItems.forEach((item) => {
+                        item.classList.add('animate');
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(corporateSection);
+    }
+    
+    // Corporate Solutions Cards animasyonlarını başlat
+    initCorporateSolutionsCardsAnimations();
+    
+    // ===== PANELS SECTION ANIMATIONS =====
+    function initPanelsSectionAnimations() {
+        const panelsSection = document.querySelector('.panels-section');
+        const panelsColorBar = document.querySelector('.panels-section__color-bar');
+        const panelsItems = document.querySelectorAll('.panels-section__item');
+        
+        if (!panelsSection) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Renk çubuğu animasyonu
+                    if (panelsColorBar) {
+                        panelsColorBar.classList.add('animate');
+                    }
+                    
+                    // Panel itemları animasyonu
+                    panelsItems.forEach((item) => {
+                        item.classList.add('animate');
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(panelsSection);
+    }
+    
+    // Panels Section animasyonlarını başlat
+    initPanelsSectionAnimations();
+    
+    // ===== TARIFFS PAGE SECTION ANIMATIONS =====
+    function initTariffsPageAnimations() {
+        const tariffsPageSection = document.querySelector('.tariffs-page');
+        const tariffsPageHeader = document.querySelector('.tariffs-page__header');
+        const tariffsPageGrids = document.querySelectorAll('.tariffs-page__grid');
+        
+        if (!tariffsPageSection) return;
+        
+        // Header animasyonu için observer
+        const headerObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (tariffsPageHeader) {
+                        tariffsPageHeader.classList.add('animate');
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        // Grid animasyonları için observer
+        const gridObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const cards = entry.target.querySelectorAll('.tarife-card');
+                    cards.forEach((card) => {
+                        card.classList.add('animate');
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        if (tariffsPageHeader) {
+            headerObserver.observe(tariffsPageHeader);
+        }
+        
+        tariffsPageGrids.forEach((grid) => {
+            gridObserver.observe(grid);
+        });
+    }
+    
+    // Tariffs Page animasyonlarını başlat
+    initTariffsPageAnimations();
+    
+    // ===== CONTACT PAGE SECTION ANIMATIONS =====
+    function initContactPageAnimations() {
+        const contactPageSection = document.querySelector('.contact-page');
+        const contactPageInfo = document.querySelector('.contact-page__info');
+        const contactPageForm = document.querySelector('.contact-page__form');
+        const contactPageInfoSections = document.querySelectorAll('.contact-page__info-section');
+        const contactPageSocial = document.querySelector('.contact-page__social');
+        
+        if (!contactPageSection) return;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Ana kolonlar animasyonu
+                    if (contactPageInfo) {
+                        contactPageInfo.classList.add('animate');
+                    }
+                    if (contactPageForm) {
+                        contactPageForm.classList.add('animate');
+                    }
+                    
+                    // Info sections animasyonu
+                    contactPageInfoSections.forEach((section) => {
+                        section.classList.add('animate');
+                    });
+                    
+                    // Social links animasyonu
+                    if (contactPageSocial) {
+                        contactPageSocial.classList.add('animate');
+                    }
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        observer.observe(contactPageSection);
+    }
+    
+    // Contact Page animasyonlarını başlat
+    initContactPageAnimations();
     
     // ===== SERVICE POINTS SECTION ANIMATIONS =====
     function initServicePointsAnimations() {
@@ -583,7 +891,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const individualFleetSection = document.querySelector('.individual-fleet');
         const tabButtons = document.querySelectorAll('.individual-fleet .tab__button');
         const tabDescriptions = document.querySelectorAll('.individual-fleet .tab__description');
-        const individualFleetButton = document.querySelector('.individual-fleet .btn-outline');
+        const individualFleetButtons = document.querySelectorAll('.individual-fleet .btn-outline');
         const individualFleetImage = document.querySelector('.individual-fleet__img');
         
         if (!individualFleetSection) return;
@@ -607,9 +915,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Buton animasyonu
                     setTimeout(() => {
-                        if (individualFleetButton) {
-                            individualFleetButton.classList.add('animate-individual-fleet-button');
-                        }
+                        individualFleetButtons.forEach(button => {
+                            button.classList.add('animate-individual-fleet-button');
+                        });
                     }, 500);
                     
                     // Görsel animasyonu
@@ -796,7 +1104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     }, 200);
                     
-                    // Logo carousel animasyonu
+                    // Logo carousel animasyonu - sadece görsel animasyon, carousel'i etkilemez
                     setTimeout(() => {
                         if (partnershipsLogos) {
                             partnershipsLogos.classList.add('animate-partnerships-logos');
@@ -1174,31 +1482,26 @@ class PartnershipsSlider {
         this.setupSlider();
         this.startAutoSlide();
         this.addEventListeners();
+        
+        // Carousel'in görünür olduğundan emin ol
+        this.slider.style.opacity = '1';
+        this.slider.style.visibility = 'visible';
     }
     
     createInfiniteLoop() {
-        // Orijinal logoları ve divider'ları klonla
-        const originalElements = Array.from(this.slider.children);
+        // Sadece orijinal logoları klonla
+        const originalLogos = Array.from(this.logos);
         
-        // 30 logo olana kadar klonla (6 orijinal + 24 klon = 30) - daha fazla klon
+        // 24 logo daha ekle (8 orijinal + 24 klon = 32 logo)
         for (let i = 0; i < 24; i++) {
-            const originalIndex = i % 6; // 6 orijinal logo var
-            const logoIndex = originalIndex * 2; // Her logo için 2 element (logo + divider)
-            const dividerIndex = originalIndex * 2 + 1;
-            
-            // Element'lerin var olduğunu kontrol et
-            if (originalElements[logoIndex] && originalElements[dividerIndex]) {
-                const clonedLogo = originalElements[logoIndex].cloneNode(true);
-                const clonedDivider = originalElements[dividerIndex].cloneNode(true);
-                
-                this.slider.appendChild(clonedLogo);
-                this.slider.appendChild(clonedDivider);
-            }
+            const originalIndex = i % originalLogos.length; // 8 orijinal logo var
+            const clonedLogo = originalLogos[originalIndex].cloneNode(true);
+            this.slider.appendChild(clonedLogo);
         }
         
         // Tüm logoları yeniden seç (orijinal + klonlar)
         this.logos = document.querySelectorAll('.partnership__logo');
-        this.totalSlides = 30; // Toplam 30 logo - daha fazla logo
+        this.totalSlides = this.logos.length; // Toplam logo sayısı
     }
     
     setupSlider() {
@@ -1206,16 +1509,23 @@ class PartnershipsSlider {
         this.slider.style.display = 'flex';
         this.slider.style.transition = 'transform 0.5s ease-in-out';
         this.slider.style.transform = 'translateX(0)';
+        this.slider.style.opacity = '1';
+        this.slider.style.visibility = 'visible';
         
-        // Responsive logo genişliği hesapla (logo + divider + gap)
+        // Responsive logo genişliği hesapla (logo + gap)
         const isMobile = window.innerWidth <= 768;
-        const logoSize = isMobile ? 100 : 120;
-        const dividerWidth = 1;
-        const gap = isMobile ? 16 : 32;
-        this.logoWidth = logoSize + dividerWidth + gap; // logo + divider + gap
+        const logoSize = isMobile ? 80 : 120;
+        const gap = isMobile ? 24 : 48; // CSS'teki gap değerleri
+        this.logoWidth = logoSize + gap; // logo + gap
         
         // Slider'ı toplam logo sayısına göre ayarla
         this.slider.style.width = `${this.logoWidth * this.totalSlides}px`;
+        
+        console.log('Slider setup completed:', {
+            totalSlides: this.totalSlides,
+            logoWidth: this.logoWidth,
+            sliderWidth: this.slider.style.width
+        });
     }
     
     startAutoSlide() {
@@ -1242,6 +1552,8 @@ class PartnershipsSlider {
         } else {
             this.updateSliderPosition();
         }
+        
+        console.log('Next slide:', this.currentIndex);
     }
     
     updateSliderPosition() {
@@ -1304,11 +1616,67 @@ window.OvoltUtils = {
 
 // Initialize slider when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    // Update current year in footer
+    const currentYearElement = document.getElementById('currentYear');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+    
     // Only initialize partnerships slider if the element exists
     const partnershipsLogos = document.querySelector('.partnerships__logos');
     if (partnershipsLogos) {
+        console.log('Partnerships logos found, initializing slider...');
         partnershipsSlider = new PartnershipsSlider();
+        console.log('Partnerships slider initialized:', partnershipsSlider);
+    } else {
+        console.log('Partnerships logos not found');
     }
+    
+    // Station map popup functionality
+    const stationPopupClose = document.querySelector('.station-map__popup-close');
+    const stationPopup = document.querySelector('.station-map__popup');
+    
+    if (stationPopupClose && stationPopup) {
+        stationPopupClose.addEventListener('click', function() {
+            stationPopup.style.display = 'none';
+        });
+    }
+    
+    // Contact page tab functionality
+    const contactTabs = document.querySelectorAll('.contact-page__tab');
+    const corporateFields = document.querySelector('.contact-page__corporate-fields');
+    const companyInput = document.getElementById('company');
+    const titleInput = document.getElementById('title');
+    
+    contactTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Remove active class from all tabs
+            contactTabs.forEach(t => t.classList.remove('contact-page__tab--active'));
+            // Add active class to clicked tab
+            this.classList.add('contact-page__tab--active');
+            
+            // Show/hide corporate fields based on selected tab
+            const isCorporate = this.getAttribute('data-tab') === 'corporate';
+            
+            if (isCorporate) {
+                // Show corporate fields with smooth animation
+                corporateFields.classList.add('contact-page__corporate-fields--visible');
+                companyInput.required = true;
+                titleInput.required = true;
+            } else {
+                // Hide corporate fields with smooth animation
+                corporateFields.classList.remove('contact-page__corporate-fields--visible');
+                companyInput.required = false;
+                titleInput.required = false;
+                
+                // Clear corporate fields when switching to individual
+                setTimeout(() => {
+                    companyInput.value = '';
+                    titleInput.value = '';
+                }, 200); // Wait for animation to complete
+            }
+        });
+    });
     
     // Scroll to top functionality
     const scrollToTopBtn = document.getElementById('scrollToTop');
@@ -1321,4 +1689,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+// ===== PARTNERSHIPS CAROUSEL =====
+// Carousel kodu buraya eklenecek
 });

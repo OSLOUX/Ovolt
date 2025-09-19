@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ovolt - Elektrikli Araç Şarj İstasyonu</title>
+    <title>İstasyon Haritası - Ovolt</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -62,10 +62,10 @@
                                 <span class="app-store-name">Google Play</span>
                             </div>
                         </a>
-                        <a href="istasyon-haritasi.html" class="btn btn--station-map">
+                        <button class="btn btn--station-map">
                             <span>İstasyon Haritası</span>
                             <img src="assets/img/station-map-icon.svg" alt="İstasyon Haritası" class="station-map-icon">
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -85,10 +85,10 @@
                         <span class="app-store-name">Google Play</span>
                     </div>
                 </a>
-                <a href="istasyon-haritasi.html" class="btn btn--station-map">
+                <button class="btn btn--station-map">
                     <span>İstasyon Haritası</span>
                     <img src="assets/img/station-map-icon.svg" alt="İstasyon Haritası" class="station-map-icon">
-                </a>
+                </button>
             </div>
             
             <div class="nav__toggle" id="nav-toggle">
@@ -100,7 +100,7 @@
     </header>
 
     <!-- Page Hero Section -->
-    <section class="page-hero" style="background-image: url('assets/img/hakkimizda-bg.jpg');">
+    <section class="page-hero" style="background-image: url('assets/img/istasyon-haritasi-bg.jpg');">
         <div class="page-hero__overlay"></div>
         <div class="container">
             <div class="page-hero__content">
@@ -111,7 +111,7 @@
                                 <a href="index.html" class="breadcrumb__link">Anasayfa</a>
                             </li>
                             <li class="breadcrumb__item breadcrumb__item--active">
-                                <span class="breadcrumb__current">Hakkımızda</span>
+                                <span class="breadcrumb__current">İstasyon Haritası</span>
                             </li>
                         </ol>
                     </nav>
@@ -123,151 +123,101 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about">
+    <!-- Station Map Section -->
+    <section class="station-map">
         <div class="container">
-            <div class="about__content">
-                <div class="about__grid">
-                    <div class="about__text">
-                        <h2 class="about__title">Geleceğin enerjisini<br>bugünden hayata<br>geçiriyoruz!</h2>
-                        <p class="about__description">
-                            Ovolt, elektrikli araç sahiplerine hızlı, güvenilir ve kolay erişilebilir şarj çözümleri sunmak amacıyla kurulmuş, Türkiye'nin hızla büyüyen elektrikli araç şarj ağı markasıdır.
-                        </p>
-                    </div>
-                    <div class="about__image">
-                        <div class="about__placeholder">
-                            <span class="placeholder__text">827 x 645</span>
+            <div class="station-map__header">
+                <div class="station-map__title-section">
+                    <h1 class="station-map__title">İstasyon Haritası</h1>
+                </div>
+                <div class="station-map__info-section">
+                    <div class="station-map__stats">
+                        <span class="station-map__count">+1880</span>
+                        <div class="station-map__logo">
+                            <img src="assets/img/station-map.svg" alt="Station Map Icon" class="station-map__logo-img">
                         </div>
                     </div>
+                    <p class="station-map__description">
+                        Opet istasyonları başta olmak üzere stratejik lokasyonlarda konumlanan Ovolt şarj istasyonlarıyla, elektrikli aracınız için hızlı, güvenilir ve kolay erişilebilir enerjiye dilediğiniz her an ulaşabilirsiniz.
+                    </p>
                 </div>
             </div>
             
-            <hr class="about__divider">
-            
-            <div class="about__details">
-                <div class="about__details-grid">
-                    <div class="about__details-image">
-                        <div class="about__details-placeholder">
-                            <span class="placeholder__text">827 x 415</span>
-                        </div>
-                    </div>
-                    <div class="about__details-text">
-                        <p class="about__details-paragraph">
-                            UNIVOLT venture capital çatısı altında faaliyet gösteren Ovolt, genişleyen altyapısı ile Türkiye genelinde sürdürülebilir ulaşımın öncüsü olmayı hedeflemektedir. UNIVOLT'un benzersiz roaming altyapısı sayesinde kullanıcılar, tek bir platform üzerinden farklı şarj istasyonlarında kesintisiz ve zahmetsiz bir deneyim yaşayabilir.
-                        </p>
-                        <p class="about__details-paragraph">
-                            Ovolt, Türkiye'nin enerji devlerinden biri olan Opet ile güçlü iş birliği içerisindedir. Bu ortaklık sayesinde elektrikli araç kullanıcılarının hayatını kolaylaştırmak amacıyla ülke genelinde yaygın bir şarj ağı kurmayı hedeflemektedir. Ovolt istasyonları, stratejik konumlarda (özellikle Opet istasyonlarında) konumlanarak elektrikli araç kullanıcılarına her an, her yerde güvenli ve hızlı enerji erişimi sağlamak üzere tasarlanmıştır.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="about__divider">
-            
-            <div class="about__mission-vision">
-                <div class="about__mission-vision-grid">
-                    <div class="about__vision">
-                        <h3 class="about__mission-vision-title">Vizyonumuz</h3>
-                        <blockquote class="about__mission-vision-quote">
-                            "Elektrikli araçların yaygınlaşmasına katkı sağlayarak, sürdürülebilir enerji çözümleri ile dünyayı daha yeşil bir geleceğe taşımak."
-                        </blockquote>
-                        <p class="about__mission-vision-description">
-                            Ovolt, elektrikli mobilite alanında yenilikçi teknolojiler geliştirerek, kullanıcılarına hızlı, güvenilir ve erişilebilir şarj çözümleri sunmayı hedefler. Amacımız; Türkiye'den başlayarak uluslararası pazarlara uzanan güçlü altyapımızla sürdürülebilir bir ulaşım ekosisteminin öncüsü olmaktır.
-                        </p>
-                    </div>
+            <div class="station-map__container">
+                <div class="station-map__map-wrapper">
+                    <!-- Google Maps iframe -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3048.5!2d32.7968!3d39.8954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDUzJzQzLjQiTiAzMsKwNDcnNDguNCJF!5e0!3m2!1str!2str!4v1640000000000!5m2!1str!2str"
+                        width="100%" 
+                        height="600" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="station-map__iframe">
+                    </iframe>
                     
-                    <div class="about__mission">
-                        <h3 class="about__mission-vision-title">Misyonumuz</h3>
-                        <blockquote class="about__mission-vision-quote">
-                            "Türkiye ve uluslararası pazarlarda, güvenilir, yenilikçi ve verimli elektrikli araç şarj altyapılarını sağlayarak, müşterilerine kesintisiz, erişilebilir ve ileri teknolojili şarj hizmetleri sunmak."
-                        </blockquote>
-                        <p class="about__mission-vision-description">
-                            UNIVOLT çatısı altında ve Opet iş birliği ile;<br>
-                            Türkiye genelinde hızla büyüyen bir şarj ağı oluşturuyoruz,<br>
-                            Roaming altyapımız sayesinde farklı markalardaki şarj istasyonlarını tek platformdan erişilebilir kılıyoruz,<br>
-                            Çevre dostu çözümlerle sürdürülebilir enerjiye geçişi hızlandırıyor ve geleceğin mobilitesine yön veriyoruz.
-                        </p>
+                    <!-- Station Info Popup -->
+                    <div class="station-map__popup">
+                        <button class="station-map__popup-close" aria-label="Kapat">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M12.854 4.854a.5.5 0 0 0-.708-.708L8 7.293 3.854 3.146a.5.5 0 1 0-.708.708L7.293 8l-4.147 4.146a.5.5 0 0 0 .708.708L8 8.707l4.146 4.147a.5.5 0 0 0 .708-.708L8.707 8l4.147-4.146z"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="station-map__popup-content">
+                            <h3 class="station-map__popup-title">YÜZÜNCÜYIL PETROL</h3>
+                            
+                            <div class="station-map__popup-details">
+                                <div class="station-map__popup-field">
+                                    <span class="station-map__popup-label">ID:</span>
+                                    <span class="station-map__popup-value">1883</span>
+                                </div>
+                                
+                                <div class="station-map__popup-field">
+                                    <span class="station-map__popup-label">Konum:</span>
+                                    <span class="station-map__popup-value">39.8954, 32.7968</span>
+                                </div>
+                                
+                                <div class="station-map__popup-icon">
+                                    <img src="assets/img/station-map-icon.svg" alt="Charging Station" class="station-map__popup-station-icon">
+                                </div>
+                            </div>
+                            
+                            <div class="station-map__popup-powers">
+                                <h4 class="station-map__popup-powers-title">Güç Seviyeleri</h4>
+                                <div class="station-map__popup-powers-list">
+                                    <div class="station-map__popup-power">
+                                        <img src="assets/img/station-map-icon.svg" alt="Charging" class="station-map__popup-power-icon">
+                                        <span class="station-map__popup-power-value">80 kW</span>
+                                    </div>
+                                    <div class="station-map__popup-power">
+                                        <img src="assets/img/station-map-icon.svg" alt="Charging" class="station-map__popup-power-icon">
+                                        <span class="station-map__popup-power-value">22 kW</span>
+                                    </div>
+                                    <div class="station-map__popup-power">
+                                        <img src="assets/img/station-map-icon.svg" alt="Charging" class="station-map__popup-power-icon">
+                                        <span class="station-map__popup-power-value">50 kW</span>
+                                    </div>
+                                    <div class="station-map__popup-power">
+                                        <img src="assets/img/station-map-icon.svg" alt="Charging" class="station-map__popup-power-icon">
+                                        <span class="station-map__popup-power-value">22 kW</span>
+                                    </div>
+                                    <div class="station-map__popup-power">
+                                        <img src="assets/img/station-map-icon.svg" alt="Charging" class="station-map__popup-power-icon">
+                                        <span class="station-map__popup-power-value">120 kW</span>
+                                    </div>
+                                    <div class="station-map__popup-power">
+                                        <img src="assets/img/station-map-icon.svg" alt="Charging" class="station-map__popup-power-icon">
+                                        <span class="station-map__popup-power-value">120 kW</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Contact Us Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact__content">
-                <div class="contact__title">
-                    <h2 class="contact__heading">Bize Ulaşın</h2>
-                </div>
-                
-                <div class="contact__description">
-                    <p class="contact__text">
-                        Bireysel ve kurumsal<br>
-                        çözümlerimizle ilgili bilgi almak<br>
-                        için bizimle iletişime geçin
-                    </p>
-                </div>
-                
-                <div class="contact__form-btn">
-                    <button class="btn-outline">
-                        <span>İletişim Formu</span>
-                        <div class="btn-outline__icon">
-                            <img src="assets/img/arrow-line-right-black.svg" alt="Arrow" class="btn-outline__arrow">
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Partnerships Section -->
-    <section class="partnerships">
-        <div class="container">
-            <div class="partnerships__content">
-                <div class="partnerships__text">
-                    <p class="partnerships__description">
-                        En iyilerle ortaklık kuruyoruz
-                    </p>
-                </div>
-                <div class="partnerships__title">
-                    <h2 class="partnerships__heading">Güçlü İş Ortaklarımızla<br>Güçlü Adımlar</h2>
-                </div>
-            </div>
-        </div>
-
-        <!-- Partnerships Carousel -->
-        <div class="partnerships__carousel">
-            <div class="partnerships__logos">
-                <div class="partnership__logo">
-                    <img src="assets/img/opet-logo.png" alt="Opet Logo" class="logo-img">
-                </div>
-                <div class="partnership__logo">
-                    <img src="assets/img/regnum-logo.png" alt="Regnum Logo" class="logo-img">
-                </div>
-                <div class="partnership__logo">
-                    <img src="assets/img/solareg-logo.png" alt="SolarEdge Logo" class="logo-img">
-                </div>
-                <div class="partnership__logo">
-                    <img src="assets/img/opet-logo.png" alt="Opet Logo" class="logo-img">
-                </div>
-                <div class="partnership__logo">
-                    <img src="assets/img/regnum-logo.png" alt="Regnum Logo" class="logo-img">
-                </div>
-                <div class="partnership__logo">
-                    <img src="assets/img/solareg-logo.png" alt="SolarEdge Logo" class="logo-img">
-                </div>
-                <div class="partnership__logo">
-                    <img src="assets/img/opet-logo.png" alt="Opet Logo" class="logo-img">
-                </div>
-                <div class="partnership__logo">
-                    <img src="assets/img/regnum-logo.png" alt="Regnum Logo" class="logo-img">
-                </div>
-            </div>
-        </div>
-
     </section>
 
     <!-- Footer -->
